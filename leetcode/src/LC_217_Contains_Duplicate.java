@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class LC_217_Contains_Duplicate {
     public boolean containsDuplicate(int[] nums) {
         for (int i = 1; i < nums.length; i++) {
@@ -10,6 +13,14 @@ public class LC_217_Contains_Duplicate {
                 nums[i] = nums[i - 1];
                 nums[i - 1] = temp;
             }
+        }
+        return false;
+    }
+
+    public boolean containsDuplicateWithSorting(int[] nums) {
+        Arrays.sort(nums);
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == nums[i - 1]) return true;
         }
         return false;
     }
