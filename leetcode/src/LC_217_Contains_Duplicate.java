@@ -1,5 +1,6 @@
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class LC_217_Contains_Duplicate {
@@ -31,6 +32,16 @@ public class LC_217_Contains_Duplicate {
         for (int i = 0; i < nums.length; i++) {
             if (seen.contains(nums[i])) return true;
             seen.add(nums[i]);
+        }
+        return false;
+    }
+
+    public boolean containsDuplicateWithSHashMap(int[] nums) {
+        HashMap<Integer, Integer> seen = new HashMap<>();
+        for (int num : nums) {
+            if (seen.containsKey(num) && seen.get(num) >= 1)
+                return true;
+            seen.put(num, seen.getOrDefault(num, 0) + 1);
         }
         return false;
     }
