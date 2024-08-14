@@ -14,6 +14,21 @@ public class LC_49_Group_Anagrams {
 
         }
         return new ArrayList<>(map.values());
+    }
+    public List<List<String>> groupAnagramsHashTableArray(String[] strs) {
+        Map<String, List<String>> map = new HashMap<>();
+        for (String str : strs) {
+            char[] keys = new char[26];
+            for(char c : str.toCharArray()) {
+                keys[c-'a'] ++;
+            }
+            String key = new String(keys);
+            if(!map.containsKey(key)){
+                map.put(key, new ArrayList<>());
+            }
+            map.get(key).add(str);
+        }
+        return new ArrayList<>(map.values());
 
     }
 }
